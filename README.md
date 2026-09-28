@@ -2,6 +2,13 @@
 
 A powerful framework for Project Zomboid modders that enables Java bytecode manipulation and runtime patching of game classes using ByteBuddy.
 
+> **Unofficial fork:** this branch adds a community patch that makes ZombieBuddy
+> load Java mods again on Project Zomboid **42.21** (the official release stops
+> loading Java mods because the game changed `ZomboidFileSystem.loadMods` to
+> `List<String>`). See [doc/PZ42-21-loadMods-fix.md](doc/PZ42-21-loadMods-fix.md)
+> and the prebuilt jar in the [Releases](../../releases). All original MIT copyright
+> notices are preserved; this is not an official release.
+
 ## What is ZombieBuddy?
 
 <img src="icon_256.png" align="right" alt="ZombieBuddy Icon" width="128" height="128">

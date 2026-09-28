@@ -32,17 +32,17 @@ public class Patch_ZomboidFileSystem {
     @Patch(className = "zombie.ZomboidFileSystem", methodName = "loadMods")
     public class Patch_loadMods2 {
         @Patch.OnEnter
-        public static void enter(ArrayList<String> mods, @Patch.Local("t0") long t0) {
+        public static void enter(List<String> mods, @Patch.Local("t0") long t0) {
             Logger.info("ZomboidFileSystem.loadMods(" + mods.size() + " mods) ...");
             long loaderStartNs = System.nanoTime();
-            Loader.loadMods(mods);
+            Loader.loadMods((ArrayList<String>) mods);
             long loaderElapsedMs = (System.nanoTime() - loaderStartNs) / 1_000_000L;
             if ( loaderElapsedMs > 1000 ) Logger.info("Loader.loadMods() took " + loaderElapsedMs + " ms");
             t0 = System.nanoTime();
         }
 
         @Patch.OnExit
-        public static void exit(ArrayList<String> mods, @Patch.Local("t0") long t0) {
+        public static void exit(List<String> mods, @Patch.Local("t0") long t0) {
             long elapsedMS = (System.nanoTime() - t0) / 1_000_000L;
             if ( elapsedMS > 1000 ) Logger.info("ZomboidFileSystem.loadMods(" + mods.size() + " mods) took " + elapsedMS + " ms");
         }
